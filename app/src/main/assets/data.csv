@@ -1,7 +1,7 @@
 ﻿pokedex_number,name,name_japanese,choice1,choice2,choice3,generation,origin1,origin2,origin3,origin1_japanese,origin2_japanese,origin3_japanese
-1,Bulbasaur,フシギダネ,フシギソウ,フシギバナ,,1,bulb,-saur,,球根,～トカゲ*ギリシャ語,
-2,Ivysaur,フシギソウ,フシギダネ,フシギバナ,,1,ivy ,-saur,,ツタ,～トカゲ*ギリシャ語,
-3,Venusaur,フシギバナ,フシギダネ,フシギソウ,,1,venus flytrap,-saur,,ハエトリグサ,～トカゲ*ギリシャ語,
+1,Bulbasaur,フシギダネ,フシギソウ,フシギバナ,,1,bulb,~saur,,球根,～トカゲ*ギリシャ語,
+2,Ivysaur,フシギソウ,フシギダネ,フシギバナ,,1,ivy ,~saur,,ツタ,～トカゲ*ギリシャ語,
+3,Venusaur,フシギバナ,フシギダネ,フシギソウ,,1,venus flytrap,~saur,,ハエトリグサ,～トカゲ*ギリシャ語,
 4,Charmander,ヒトカゲ,リザード,リザードン,,1,char,salamander,,焦がす,サラマンダー*火の中に住むとされる伝説のトカゲ,
 5,Charmeleon,リザード,ヒトカゲ,ゼニガメ,,1,char,chameleon,,焦がす,カメレオン,
 6,Charizard,リザードン,ヒトカゲ,リザード,,1,char,lizard,,焦がす,トカゲ,
@@ -28,10 +28,10 @@
 27,Sandshrew,サンド,サンドパン,,,1,sand,shrew,,砂,トガリネズミ,
 28,Sandslash,サンドパン,サンド,,,1,sand,slash,,砂,切りつける,
 29,Nidoran♀,ニドラン♀,ニドリーナ,ニドクイン,ニドラン♂,1,needle,rhino,♀,針,サイ,メス
-30,Nidorina,ニドリーナ,ニドラン♀,ニドラン♂,ニドリーノ,1,needle,rhino,-a,針,サイ,女性
+30,Nidorina,ニドリーナ,ニドラン♀,ニドラン♂,ニドリーノ,1,needle,rhino,a,針,サイ,女性
 31,Nidoqueen,ニドクイン,ニドキング,ニドリーナ,ニドリーノ,1,needle,queen,,針,女王,
 32,Nidoran♂,ニドラン♂,ニドラン♀,ニドリーナ,ニドリーノ,1,needle,rhino,♂,針,サイ,オス
-33,Nidorino,ニドリーノ,ニドリーナ,ニドラン♂,ニドラン♀,1,needle,rhino,-o,針,サイ,男性
+33,Nidorino,ニドリーノ,ニドリーナ,ニドラン♂,ニドラン♀,1,needle,rhino,o,針,サイ,男性
 34,Nidoking,ニドキング,ニドクイン,ニドリーナ,ニドリーノ,1,needle,king,,針,王,
 35,Clefairy,ピッピ,ピクシー,,,1,clef,fairy,,音部記号*ト音記号・ヘ音記号など,妖精,
 36,Clefable,ピクシー,ピッピ,,,1,clef,fable,,音部記号*ト音記号・ヘ音記号など,寓話,
@@ -48,7 +48,7 @@
 47,Parasect,パラセクト,パラス,,,1,parasite,insect,,寄生虫,虫,
 48,Venonat,コンパン,モルフォン,,,1,venom,gnat,,毒,ブヨ,
 49,Venomoth,モルフォン,コンパン,,,1,venom,moth,,毒,蛾,
-50,Diglett,ディグダ,ダグトリオ,,,1,dig,-lett,,掘る,小さい,
+50,Diglett,ディグダ,ダグトリオ,,,1,dig,~lett,,掘る,小さい,
 51,Dugtrio,ダグトリオ,ディグダ,,,1,dug,trio,,掘られた,トリオ,
 52,Meowth,ニャース,ペルシアン,,,1,meow,,,ニャー*猫の鳴き声,,
 53,Persian,ペルシアン,ニャース,,,1,persian,,,ペルシャ猫,,
@@ -72,7 +72,7 @@
 71,Victreebel,ウツボット,マダツボミ,ウツドン,,1,victory,tree,bell,勝利,木,ベル
 72,Tentacool,メノクラゲ,ドククラゲ,,,1,tentacle,cool,,触手,クール,
 73,Tentacruel,ドククラゲ,メノクラゲ,,,1,tentacle,cruel,,触手,残酷な,
-74,Geodude,イシツブテ,ゴローン,ゴローニャ,,1,geo-,dude,,地球の,野郎,
+74,Geodude,イシツブテ,ゴローン,ゴローニャ,,1,geo~,dude,,地球の,野郎,
 75,Graveler,ゴローン,イシツブテ,ゴローン,,1,gravel,,,砂利,,
 76,Golem,ゴローニャ,イシツブテ,ゴローン,,1,golem,,,ゴーレム,,
 77,Ponyta,ポニータ,ギャロップ,,,1,pony,ponytail,,ポニー,ポニーテール,
@@ -140,7 +140,7 @@
 139,Omastar,オムスター,オムナイト,,,1,ammonite,star,,アンモナイト,星,
 140,Kabuto,カブト,カブトプス,,,1,kabuto,,,カブト,,
 141,Kabutops,カブトプス,カブト,,,1,kabuto,tops,,カブト,最高の,
-142,Aerodactyl,プテラ,,,,1,aero-,pterodactyl,,空の～,プテロダクティルス*最古の翼竜,
+142,Aerodactyl,プテラ,,,,1,aero~,pterodactyl,,空の～,プテロダクティルス*最古の翼竜,
 143,Snorlax,カビゴン,,,,1,snore,lax,,いびき,だらしない,
 144,Articuno,フリーザー,サンダー,ファイヤー,,1,arctic,uno,,めっちゃ寒い,スペイン語で1,
 145,Zapdos,サンダー,フリーザー,ファイヤー,,1,zap,dos,,バチッ*静電気の音,スペイン語で2,
