@@ -1,0 +1,6 @@
+3/15
+当面はsqliteを使わずcsvで管理することにする
+機能は最小限でミニマルな状態で完成させる
+
+よくワカランエラー
+2022-03-15 04:08:49.095 23206-23206/eigodog.dogadoga.android.englishquizforpokemon E/hquizforpokemo: Failed to open file '/data/data/eigodog.dogadoga.android.englishquizforpokemon/code_cache/.overlay/base.apk/assets/data.csv': No such file or directory
