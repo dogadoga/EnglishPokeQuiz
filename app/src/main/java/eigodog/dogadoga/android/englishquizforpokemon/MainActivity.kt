@@ -1,13 +1,11 @@
 package eigodog.dogadoga.android.englishquizforpokemon
 
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import CsvReader
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.util.Log
@@ -36,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         mutableListOf("福島県", "福島市", "盛岡市", "新宿区", "京都市"),
         mutableListOf("茨城県", "水戸市", "金沢市", "名古屋市", "奈良市"),
         mutableListOf("栃木県", "宇都宮市", "札幌市", "岡山市", "奈良市"),
+        mutableListOf("群馬県", "前橋市", "福岡市", "松江市", "福井市"),
         mutableListOf("群馬県", "前橋市", "福岡市", "松江市", "福井市")
     )
 
@@ -50,9 +49,9 @@ class MainActivity : AppCompatActivity() {
         //CsvReaderクラスをインスタンス化
         val csvReader = CsvReader(this.assets, "data.csv")
         //1行目はヘッダーなので飛ばす。
-        val csvContents = csvReader.readCsv(1)
-        for(contents in csvContents){
-            for(content in contents){
+        val csvPokemons = csvReader.readCsv(1)
+        for(pokemon in csvPokemons){
+            for(content in pokemon){
                 Log.i("[Result]", "content = $content")
             }
         }

@@ -1,3 +1,5 @@
+package eigodog.dogadoga.android.englishquizforpokemon
+
 import android.content.res.AssetManager
 import java.io.BufferedReader
 import java.io.IOException
@@ -22,7 +24,7 @@ class CsvReader (assetManager: AssetManager, csvFilePath: String){
      * @return mutableListOf<List<String>>()
      */
     fun readCsv(
-        //スキップする行数?
+        //スキップする行数
         skipLine: Int = 0,
         //エンコード
         encoding: String = "UTF-8",
