@@ -16,9 +16,11 @@ class AssetDatabaseOpenHelper (private val context: Context) {
         private const val DB_NAME = "pokemondata.sqlite3"
     }
 
+    /**
+     * データベースを開く
+     */
     fun openDatabase(): SQLiteDatabase {
         val dbFile = context.getDatabasePath(DB_NAME)
-
 
         if (!dbFile.exists()) {
             try {
@@ -30,7 +32,10 @@ class AssetDatabaseOpenHelper (private val context: Context) {
                 throw RuntimeException("Error creating source database", e)
             }
 
+        }else{
+            Log.d("#DB","データベースは既に存在しています")
         }
+
         return SQLiteDatabase.openDatabase(dbFile.path, null, SQLiteDatabase.OPEN_READWRITE)
     }
 

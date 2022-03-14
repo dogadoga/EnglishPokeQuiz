@@ -46,15 +46,19 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //CsvReaderクラスをインスタンス化
-        val csvReader = CsvReader(this.assets, "data.csv")
-        //1行目はヘッダーなので飛ばす。
-        val csvPokemons = csvReader.readCsv(1)
-        for(pokemon in csvPokemons){
-            for(content in pokemon){
-                Log.i("[Result]", "content = $content")
-            }
-        }
+        //データベースをコピー
+        val adb = AssetDatabaseOpenHelper(this)
+        adb.openDatabase()
+
+//        //CsvReaderクラスをインスタンス化
+//        val csvReader = CsvReader(this.assets, "data.csv")
+//        //1行目はヘッダーなので飛ばす。
+//        val csvPokemons = csvReader.readCsv(1)
+//        for(pokemon in csvPokemons){
+//            for(content in pokemon){
+//                Log.i("[Result]", "content = $content")
+//            }
+//        }
 
         quizData.shuffle()
 
