@@ -79,7 +79,7 @@ class QuizActivity : AppCompatActivity() {
 //        adb.openDatabase()
 
         //CsvReaderクラスをインスタンス化
-        val csvReader = CsvReader(this.assets, "data.csv")
+        val csvReader = CsvReader(this.assets, "datav2.csv")
         //1行目はヘッダーなので飛ばす。
         val csvPokemons = csvReader.readCsv(1)
 
