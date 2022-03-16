@@ -29,5 +29,10 @@ class ResultActivity : AppCompatActivity() {
         binding.tryAgainBtn.setOnClickListener{
             startActivity(Intent(this@ResultActivity, QuizActivity::class.java))
         }
+
+        //戻るボタン
+        binding.return2MainButton.setOnClickListener{
+            startActivity(Intent(this@ResultActivity, MainActivity::class.java))
+        }
     }
 }
