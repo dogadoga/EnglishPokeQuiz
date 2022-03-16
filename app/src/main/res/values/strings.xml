@@ -10,4 +10,13 @@
     <string name="result_title">結果</string>
     <string name="result_score">%d / 5</string>
     <string name="btn_try_again">もう一度</string>
+    <string name="gen_num">第%s世代</string>
+    <string name="gen1">第1世代</string>
+    <string name="gen2">第2世代</string>
+    <string name="gen3">第3世代</string>
+    <string name="gen4">第4世代</string>
+    <string name="gen5">第5世代</string>
+    <string name="gen6">第6世代</string>
+    <string name="gen7">第7世代</string>
+    <string name="gen8">第8世代</string>
 </resources>

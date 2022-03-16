@@ -8,6 +8,14 @@
     android:orientation="vertical"
     tools:context=".QuizActivity"
     tools:ignore="UsingOnclickInXml">
+    <TextView
+        android:id="@+id/genNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gen_num"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"/>
 
     <TextView
         android:id="@+id/countLabel"

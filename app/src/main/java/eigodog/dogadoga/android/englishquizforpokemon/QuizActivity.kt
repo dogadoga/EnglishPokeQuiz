@@ -26,7 +26,7 @@ class QuizActivity : AppCompatActivity() {
 
     private var rightAnswerCount = 0
     private var quizCount = 1
-    //valは定数
+    //出題数
     private val QUIZ_COUNT = 5
     //配列のインデックス
     private val POKEDEX_NUMBER = 0
@@ -52,6 +52,10 @@ class QuizActivity : AppCompatActivity() {
     private val GEN_7 = 809
     private val GEN_8 = 905
     //クイズ用配列
+    /**
+     * 出題する問題
+     */
+    private var pokeData = mutableListOf<MutableList<String>>()
     private var dataGen1 = mutableListOf<MutableList<String>>()
     private var dataGen2 = mutableListOf<MutableList<String>>()
     private var dataGen3 = mutableListOf<MutableList<String>>()
@@ -62,29 +66,10 @@ class QuizActivity : AppCompatActivity() {
     private var dataGen8 = mutableListOf<MutableList<String>>()
 
 
-    private val quizData = mutableListOf(
-        mutableListOf("北海道", "札幌市", "長崎市", "福島市", "前橋市"),
-        mutableListOf("青森県", "青森市", "広島市", "甲府市", "岡山市"),
-        mutableListOf("岩手県", "盛岡市", "大分市", "秋田市", "福岡市"),
-        mutableListOf("宮城県", "仙台市", "水戸市", "岐阜市", "福井市"),
-        mutableListOf("秋田県", "秋田市", "横浜市", "鳥取市", "仙台市"),
-        mutableListOf("山形県", "山形市", "青森市", "山口市", "奈良市"),
-        mutableListOf("福島県", "福島市", "盛岡市", "新宿区", "京都市"),
-        mutableListOf("茨城県", "水戸市", "金沢市", "名古屋市", "奈良市"),
-        mutableListOf("栃木県", "宇都宮市", "札幌市", "岡山市", "奈良市"),
-        mutableListOf("群馬県", "前橋市", "福岡市", "松江市", "福井市"),
-        mutableListOf("群馬県", "前橋市", "福岡市", "松江市", "福井市")
-    )
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
 
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        val view = binding.root
-//        setContentView(view)
         // bindingの初期化とついでにsetContentViewも行います
         binding = ActivityQuizBinding.inflate(layoutInflater)
             .apply { setContentView(this.root) }
@@ -98,50 +83,63 @@ class QuizActivity : AppCompatActivity() {
         //1行目はヘッダーなので飛ばす。
         val csvPokemons = csvReader.readCsv(1)
 
-        /**
-         * for文内のインデント用
-         */
-        var i = 0
+        //世代を受け取って表示
+        var genNum = intent.getStringExtra("GEN")
+        binding.genNum.text = getString(R.string.gen_num, genNum)
+
         //気持ち悪い実装になっている
-        for(pokemon in csvPokemons){
+        for((i,pokemon) in csvPokemons.withIndex()){
             if(i<GEN_1){
-                var list = pokemon.toMutableList()
+                val list = pokemon.toMutableList()
                 dataGen1.add(list)
             }else if(i<GEN_2){
-                var list = pokemon.toMutableList()
+                val list = pokemon.toMutableList()
                 dataGen2.add(list)
             }else if(i<GEN_3){
-                var list = pokemon.toMutableList()
+                val list = pokemon.toMutableList()
                 dataGen3.add(list)
             }else if(i<GEN_4){
-                var list = pokemon.toMutableList()
+                val list = pokemon.toMutableList()
                 dataGen4.add(list)
             }else if(i<GEN_5){
-                var list = pokemon.toMutableList()
+                val list = pokemon.toMutableList()
                 dataGen5.add(list)
             }else if(i<GEN_6){
-                var list = pokemon.toMutableList()
+                val list = pokemon.toMutableList()
                 dataGen6.add(list)
             }else if(i<GEN_7){
-                var list = pokemon.toMutableList()
+                val list = pokemon.toMutableList()
                 dataGen7.add(list)
             }else{
-                var list = pokemon.toMutableList()
+                val list = pokemon.toMutableList()
                 dataGen8.add(list)
             }
-            i++
         }
-//        for(pokemon in csvPokemons){
-//            for(content in pokemon){
-//                Log.i("[Result]", "content = $content")
-//            }
-//        }
 
         for(pokemon in dataGen1){
                 Log.i("[Result]", "content = ${pokemon[0]}")
         }
 
-        dataGen1.shuffle()
+        //問題のデータをセット
+        if(genNum == "1"){
+            pokeData = dataGen1
+        }else if(genNum == "2"){
+            pokeData = dataGen2
+        }else if(genNum == "3"){
+            pokeData = dataGen3
+        }else if(genNum == "4"){
+            pokeData = dataGen4
+        }else if(genNum == "5"){
+            pokeData = dataGen5
+        }else if(genNum == "6"){
+            pokeData = dataGen6
+        }else if(genNum == "7"){
+            pokeData = dataGen7
+        }else{
+            pokeData = dataGen8
+        }
+
+        pokeData.shuffle()
 
         showNextQuiz()
     }
@@ -154,7 +152,7 @@ class QuizActivity : AppCompatActivity() {
         binding.countLabel.text = getString(R.string.count_label, quizCount)
 
         //クイズを1問取り出す
-        val poke = dataGen1[0]
+        val poke = pokeData[0]
         val quiz = mutableListOf<String>()
         quiz += poke[POKE_NAME_EN]
         quiz += poke[POKE_NAME_JA]
@@ -187,7 +185,7 @@ class QuizActivity : AppCompatActivity() {
         binding.answerBtn4.text = quiz[3]
 
         //出題したクイズを削除する
-        dataGen1.removeAt(0)
+        pokeData.removeAt(0)
     }
 
     /**
@@ -237,6 +235,11 @@ class QuizActivity : AppCompatActivity() {
 
         //movementMethodでリンクを開けるようにする
         dialog.findViewById<TextView>(android.R.id.message)?.movementMethod = LinkMovementMethod.getInstance()
+
+        //語源をリセット
+        origin1 = ""
+        origin2 = ""
+        origin3 = ""
     }
 
     /**
