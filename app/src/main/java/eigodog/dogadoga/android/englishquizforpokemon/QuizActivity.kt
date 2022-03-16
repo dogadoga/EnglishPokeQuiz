@@ -20,6 +20,10 @@ class QuizActivity : AppCompatActivity() {
 
     private var question: String? = null
     private var rightAnswer: String? = null
+    private var origin1: String? = ""
+    private var origin2: String? = ""
+    private var origin3: String? = ""
+
     private var rightAnswerCount = 0
     private var quizCount = 1
     //valは定数
@@ -158,6 +162,11 @@ class QuizActivity : AppCompatActivity() {
         quiz += poke[CHOICE2]
         quiz += poke[CHOICE3]
 
+        //語源をセット
+        if(poke[ORIGIN1_EN] != "") {origin1 = "${poke[ORIGIN1_EN]}：${poke[ORIGIN1_JA]}"}
+        if(poke[ORIGIN2_EN] != "") {origin2 = "${poke[ORIGIN2_EN]}：${poke[ORIGIN2_JA]}"}
+        if(poke[ORIGIN3_EN] != "") {origin3 = "${poke[ORIGIN3_EN]}：${poke[ORIGIN3_JA]}"}
+
         //問題をセット
         question = quiz[0]
         binding.questionLabel.text = question
@@ -180,35 +189,6 @@ class QuizActivity : AppCompatActivity() {
         //出題したクイズを削除する
         dataGen1.removeAt(0)
     }
-//    fun showNextQuiz(){
-//        //カウントラベルの更新
-//        binding.countLabel.text = getString(R.string.count_label, quizCount)
-//
-//        //クイズを1問取り出す
-//        val quiz = quizData[0]
-//
-//        //問題をセット
-//        question = quiz[0]
-//        binding.questionLabel.text = question
-//
-//        //正解をセット
-//        rightAnswer = quiz[1]
-//
-//        //問題のポケモンを削除
-//        quiz.removeAt(0)
-//
-//        //正解と選択肢3つをシャッフル
-//        quiz.shuffle()
-//
-//        //選択肢をセット
-//        binding.answerBtn1.text = quiz[0]
-//        binding.answerBtn2.text = quiz[1]
-//        binding.answerBtn3.text = quiz[2]
-//        binding.answerBtn4.text = quiz[3]
-//
-//        //出題したクイズを削除する
-//        quizData.removeAt(0)
-//    }
 
     /**
      * 解答ボタンが押されたら呼ばれる
@@ -233,6 +213,11 @@ class QuizActivity : AppCompatActivity() {
          */
         val html = """
             答え： $rightAnswer <br><br>
+            $question<br><br>
+            [語源]<br>
+            $origin1<br>
+            $origin2<br>
+            $origin3<br><br>
             <a href="https://www.google.com/search?q=$question&tbm=isch">画像</a>を開く
         """.trimIndent()
 
