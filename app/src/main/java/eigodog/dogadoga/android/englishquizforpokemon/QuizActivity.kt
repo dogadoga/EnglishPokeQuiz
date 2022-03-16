@@ -26,8 +26,8 @@ class QuizActivity : AppCompatActivity() {
 
     private var rightAnswerCount = 0
     private var quizCount = 1
-    //出題数
-    private val QUIZ_COUNT = 5
+    private var genNum: String? = "0" //世代
+    private val QUIZ_COUNT = 5  //出題数
     //配列のインデックス
     private val POKEDEX_NUMBER = 0
     private val POKE_NAME_EN = 1
@@ -84,7 +84,7 @@ class QuizActivity : AppCompatActivity() {
         val csvPokemons = csvReader.readCsv(1)
 
         //世代を受け取って表示
-        var genNum = intent.getStringExtra("GEN")
+        genNum = intent.getStringExtra("GEN")
         binding.genNum.text = getString(R.string.gen_num, genNum)
 
         //気持ち悪い実装になっている
@@ -149,7 +149,7 @@ class QuizActivity : AppCompatActivity() {
      */
     fun showNextQuiz(){
         //カウントラベルの更新
-        binding.countLabel.text = getString(R.string.count_label, quizCount)
+        binding.countLabel.text = getString(R.string.count_label, quizCount, QUIZ_COUNT)
 
         //クイズを1問取り出す
         val poke = pokeData[0]
@@ -216,7 +216,7 @@ class QuizActivity : AppCompatActivity() {
             $origin1<br>
             $origin2<br>
             $origin3<br><br>
-            <a href="https://www.google.com/search?q=$question&tbm=isch">画像</a>を開く
+            <a href="https://www.google.com/search?q=$rightAnswer&tbm=isch">画像</a>を開く
         """.trimIndent()
 
         /**
@@ -247,9 +247,10 @@ class QuizActivity : AppCompatActivity() {
      */
     fun checkQuizCount(){
         if(quizCount==QUIZ_COUNT) {
-            //結果画面を表示(.javaであってるの？)
+            //結果画面を表示
             val intent = Intent(this@QuizActivity, ResultActivity::class.java)
             intent.putExtra("RIGHT_ANSWER_COUNT",rightAnswerCount)
+            intent.putExtra("GEN",genNum)
             startActivity(intent)
         }else{
             quizCount++

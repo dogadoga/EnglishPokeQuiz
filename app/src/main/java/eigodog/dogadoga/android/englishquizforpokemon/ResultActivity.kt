@@ -21,13 +21,16 @@ class ResultActivity : AppCompatActivity() {
 
         //正解数を取得
         val score = intent.getIntExtra("RIGHT_ANSWER_COUNT", 0)
-
+        //世代を取得
+        var genNum = intent.getStringExtra("GEN")
         //TextViewに表示する
         binding.resultLabel.text = getString(R.string.result_score, score)
 
         //もう一度ボタン(setOnClickListener)
         binding.tryAgainBtn.setOnClickListener{
-            startActivity(Intent(this@ResultActivity, QuizActivity::class.java))
+            val intent = Intent(this@ResultActivity, QuizActivity::class.java)
+            intent.putExtra("GEN",genNum) //世代を渡す
+            startActivity(intent)
         }
 
         //戻るボタン
