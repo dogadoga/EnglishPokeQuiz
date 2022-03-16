@@ -27,7 +27,7 @@ class ResultActivity : AppCompatActivity() {
 
         //もう一度ボタン(setOnClickListener)
         binding.tryAgainBtn.setOnClickListener{
-            startActivity(Intent(this@ResultActivity, MainActivity::class.java))
+            startActivity(Intent(this@ResultActivity, QuizActivity::class.java))
         }
     }
 }
