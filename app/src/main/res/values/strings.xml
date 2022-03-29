@@ -3,7 +3,8 @@
 
     <!-- クイズ画面 -->
     <string name="question_label">問題文</string>
-    <string name="count_label">Q%d / %d</string>
+    <string name="count_label">Q %d / %d</string>
+    <string name="level_label">Lv.%d</string>
     <string name="btn_answer">選択肢</string>
 
     <!-- 結果画面 -->

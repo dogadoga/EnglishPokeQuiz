@@ -1,5 +1,6 @@
 package eigodog.dogadoga.android.englishquizforpokemon
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,10 @@ import android.util.Log
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import eigodog.dogadoga.android.englishquizforpokemon.databinding.ActivityQuizBinding
+import android.content.SharedPreferences
+
+
+
 
 
 class QuizActivity : AppCompatActivity() {
@@ -27,7 +32,10 @@ class QuizActivity : AppCompatActivity() {
     private var rightAnswerCount = 0
     private var quizCount = 1
     private var genNum: String? = "0" //世代
+    private var pokedexNo: String? = "0" //図鑑ナンバー
+    private var pokeLevel = 0
     private val QUIZ_COUNT = 5  //出題数
+    private val MAX_LEVEL = 100 //ポケモンのレベル
     //配列のインデックス
     private val POKEDEX_NUMBER = 0
     private val POKE_NAME_EN = 1
@@ -87,7 +95,7 @@ class QuizActivity : AppCompatActivity() {
         genNum = intent.getStringExtra("GEN")
         binding.genNum.text = getString(R.string.gen_num, genNum)
 
-        //気持ち悪い実装になっている
+        //気持ち悪い実装になってしまっている
         for((i,pokemon) in csvPokemons.withIndex()){
             if(i<GEN_1){
                 val list = pokemon.toMutableList()
@@ -165,6 +173,14 @@ class QuizActivity : AppCompatActivity() {
         if(poke[ORIGIN2_EN] != "") {origin2 = "${poke[ORIGIN2_EN]}：${poke[ORIGIN2_JA]}"}
         if(poke[ORIGIN3_EN] != "") {origin3 = "${poke[ORIGIN3_EN]}：${poke[ORIGIN3_JA]}"}
 
+        //図鑑ナンバーをセット
+        pokedexNo = poke[POKEDEX_NUMBER]
+
+        //レベルを取得
+        val saveData = getSharedPreferences("SaveData", Context.MODE_PRIVATE)
+        pokeLevel = saveData.getInt(pokedexNo, 1)
+        binding.levelLabel.text = getString(R.string.level_label, pokeLevel)
+
         //問題をセット
         question = quiz[0]
         binding.questionLabel.text = question
@@ -201,9 +217,17 @@ class QuizActivity : AppCompatActivity() {
         if (btnText == rightAnswer){
             alertTitle = "正解！"
             rightAnswerCount++
+            if(pokeLevel < MAX_LEVEL){
+                pokeLevel++
+                //レベルアップ
+                val saveData = getSharedPreferences("SaveData", Context.MODE_PRIVATE)
+                saveData.edit().putInt(pokedexNo, pokeLevel).apply()
+            }
         }else{
             alertTitle = "不正解..."
         }
+
+        Log.d("QuizActivity","$question : lv$pokeLevel")
 
         /**
          * ダイアログ内で表示させるためのhtml。
@@ -252,6 +276,7 @@ class QuizActivity : AppCompatActivity() {
             intent.putExtra("RIGHT_ANSWER_COUNT",rightAnswerCount)
             intent.putExtra("GEN",genNum)
             startActivity(intent)
+
         }else{
             quizCount++
             showNextQuiz()

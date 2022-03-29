@@ -15,7 +15,7 @@
         android:text="@string/gen_num"
         android:textSize="20sp"
         android:layout_gravity="center"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:id="@+id/countLabel"
@@ -25,10 +25,19 @@
         android:textSize="22sp" />
 
     <TextView
-        android:id="@+id/questionLabel"
+        android:id="@+id/levelLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:text="@string/level_label"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/questionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="60dp"
         android:text="@string/question_label"
         android:textSize="24sp" />
 
